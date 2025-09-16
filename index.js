@@ -1,105 +1,247 @@
 /**
- * @param {number[]} numbers an array of integers
- * @returns {number} the length of the array
- */
+
+ * @param {number[]} numbers an array of integers
+
+ * @returns {number} the length of the array
+
+ */
+
 function getLength(numbers) {
-  // TODO
+  let length = 0;
+
+  for (let i = 0; i < numbers.length; i++) {
+    length += 1;
+  }
+
+  return length;
 }
 
 /**
- * @param {number[]} numbers an array of integers
- * @returns {number} the sum of the numbers
- */
+
+ * @param {number[]} numbers an array of integers
+
+ * @returns {number} the sum of the numbers
+
+ */
+
 function getSum(numbers) {
-  // TODO
+  let total = 0;
+
+  for (let i = 0; i < numbers.length; i++) {
+    total += numbers[i];
+  }
+
+  return total;
 }
 
 /**
- * @param {number[]} numbers an array of integers
- * @returns {number} the mean of the numbers
- */
+
+ * @param {number[]} numbers an array of integers
+
+ * @returns {number} the mean of the numbers
+
+ */
+
 function getMean(numbers) {
-  // TODO
+  if (!numbers.length) {
+    alert("Must input at least one number");
+
+    return;
+  }
+
+  const sum = getSum(numbers);
+
+  const numItems = getLength(numbers);
+
+  return sum / numItems;
 }
 
 /**
- * @param {number[]} numbers an array of integers
- * @returns {number} the smallest of the numbers
- */
+
+ * @param {number[]} numbers an array of integers
+
+ * @returns {number} the smallest of the numbers
+
+ */
+
 function getMin(numbers) {
-  // TODO
+  if (!numbers.length) {
+    alert("Must input at least one number");
+
+    return;
+  }
+
+  let min = numbers[0];
+
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] < min) {
+      min = numbers[i];
+    }
+  }
+
+  return min;
 }
 
 /**
- * @param {number[]} numbers an array of integers
- * @returns {number} the largest of the numbers
- */
+
+ * @param {number[]} numbers an array of integers
+
+ * @returns {number} the largest of the numbers
+
+ */
+
 function getMax(numbers) {
-  // TODO
+  if (!numbers.length) {
+    alert("Must input at least one number");
+
+    return;
+  }
+
+  let max = numbers[0];
+
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > max) {
+      max = numbers[i];
+    }
+  }
+
+  return max;
 }
 
 /**
- * @param {number[]} numbers an array of integers
- * @returns {number} the range of the numbers (max - min)
- */
+
+ * @param {number[]} numbers an array of integers
+
+ * @returns {number} the range of the numbers (max - min)
+
+ */
+
 function getRange(numbers) {
-  // TODO
+  if (!numbers.length) {
+    alert("Must input at least one number");
+
+    return;
+  }
+
+  const max = getMax(numbers);
+
+  const min = getMin(numbers);
+
+  return max - min;
 }
 
 /**
- * @param {number[]} numbers an array of integers
- * @returns {number[]} the even numbers in the array
- */
+
+ * @param {number[]} numbers an array of integers
+
+ * @returns {number[]} the even numbers in the array
+
+ */
+
 function getEvens(numbers) {
-  // TODO
+  const evens = [];
+
+  if (!numbers.length) {
+    alert("Must input at least one number");
+
+    return;
+  }
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      evens.push(numbers[i]);
+    }
+  }
+
+  return evens;
 }
 
 /**
- * @param {number[]} numbers an array of integers
- * @returns {number[]} the odd numbers in the array
- */
+
+ * @param {number[]} numbers an array of integers
+
+ * @returns {number[]} the odd numbers in the array
+
+ */
+
 function getOdds(numbers) {
-  // TODO
+  const odds = [];
+
+  if (!numbers.length) {
+    alert("Must input at least one number");
+
+    return;
+  }
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 !== 0) {
+      odds.push(numbers[i]);
+    }
+  }
+
+  return odds;
 }
 
 // === READ BUT DO NOT EDIT THE CODE BELOW ===
 
 /**
- * @param {string} commaSeparatedNumbers
- * @returns {number[]} the string converted into an array of numbers
- */
+
+ * @param {string} commaSeparatedNumbers
+
+ * @returns {number[]} the string converted into an array of numbers
+
+ */
+
 function convertStringToNumbers(commaSeparatedNumbers) {
   // Split the string of numbers into an array of strings.
-  const strings = commaSeparatedNumbers.split(",");
 
-  // Convert the array of strings into an array of numbers
+  const strings = commaSeparatedNumbers.split(","); // Convert the array of strings into an array of numbers
+
   const numbers = [];
+
   for (const s of strings) {
     const number = parseInt(s);
+
     numbers.push(number);
   }
+
   return numbers;
 }
 
 /**
- * Prints some descriptive statistics about the provided numbers.
- * @param {number[]} numbers
- */
+
+ * Prints some descriptive statistics about the provided numbers.
+
+ * @param {number[]} numbers
+
+ */
+
 function describeNumbers(numbers) {
   console.log(numbers);
+
   console.log(`You have given ${getLength(numbers)} numbers.`);
+
   console.log(`The sum of your numbers is ${getSum(numbers)}.`);
+
   console.log(`The mean of your numbers is ${getMean(numbers)}.`);
+
   console.log(`The smallest of your numbers is ${getMin(numbers)}.`);
+
   console.log(`The largest of your numbers is ${getMax(numbers)}.`);
+
   console.log(`The range of your numbers is ${getRange(numbers)}.`);
+
   console.log(`The even numbers you gave are ${getEvens(numbers)}.`);
+
   console.log(`The odd numbers you gave are ${getOdds(numbers)}.`);
 }
 
 const userInputString = prompt(
   "Please enter some integers separated by commas.",
+
   "28,-15,30,975,400"
 );
+
 const numbers = convertStringToNumbers(userInputString);
+
 describeNumbers(numbers);
